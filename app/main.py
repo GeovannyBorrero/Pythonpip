@@ -1,14 +1,16 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 def run():
+  df = pd.read_csv('data.csv') # = data = read_csv.read_csv('data.csv')
+  df = df[df['Continent'] == 'South America']# =  data = list(filter(lambda item : item['Continent'] == 'South America',data))
   data = read_csv.read_csv('data.csv')
-  data = list(filter(lambda item : item['Continent'] == 'South America',data))
 
-  countries = list(map(lambda x: x['Country'], data))
-  percentages = list(map(lambda x: x['World Population Percentage'], data))
-  
+  countries = df['Country'].values # = countries = list(map(lambda x: x['Country'], data))
+  percentages = df['World Population Percentage'].values# = percentages = list(map(lambda x: x['World Population Percentage'], data))
+
   countrys = input('Type Country => ')
 
 
